@@ -5,6 +5,9 @@ import org.springframework.stereotype.Component;
 
 import java.lang.annotation.*;
 
+/**
+ * @author loryi
+ */
 @Target(ElementType.METHOD)
 @Retention(RetentionPolicy.RUNTIME)
 @Documented

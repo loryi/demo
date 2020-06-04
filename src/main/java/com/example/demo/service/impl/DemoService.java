@@ -7,6 +7,9 @@ import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 
+/**
+ * @author loryi
+ */
 @Service
 public class DemoService implements IDemoService {
 

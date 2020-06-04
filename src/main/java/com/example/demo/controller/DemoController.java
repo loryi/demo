@@ -11,6 +11,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
 
+/**
+ * @author loryi
+ */
 @Controller
 @RequestMapping("/demo")
 public class DemoController {

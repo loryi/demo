@@ -1,5 +1,8 @@
 package com.example.demo.common;
 
+/**
+ * @author loryi
+ */
 public enum CacheType {
 	
 	/**

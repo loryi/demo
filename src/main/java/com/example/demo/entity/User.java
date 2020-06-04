@@ -2,6 +2,9 @@ package com.example.demo.entity;
 
 import java.util.Date;
 
+/**
+ * @author loryi
+ */
 public class User {
 
     private String id;

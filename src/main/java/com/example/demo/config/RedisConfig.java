@@ -18,7 +18,9 @@ import org.springframework.data.redis.serializer.StringRedisSerializer;
 
 import java.lang.reflect.Method;
 
-
+/**
+ * @author loryi
+ */
 @Configuration
 @EnableCaching
 public class RedisConfig extends CachingConfigurerSupport {
@@ -31,6 +33,7 @@ public class RedisConfig extends CachingConfigurerSupport {
      *              若想使用这个key  只需要讲注解上keyGenerator的值设置为keyGenerator即可</br>
      * @return 自定义策略生成的key
      */
+    @Override
     @Bean
     public KeyGenerator keyGenerator() {
         return new KeyGenerator(){
@@ -46,7 +49,12 @@ public class RedisConfig extends CachingConfigurerSupport {
             }
         };
     }
-    //缓存管理器
+
+    /**
+     * 缓存管理器
+     * @param jedisConnectionFactory
+     * @return
+     */
     @Bean
     public RedisCacheManager cacheManager(JedisConnectionFactory jedisConnectionFactory) {
         return RedisCacheManager.create(jedisConnectionFactory);
@@ -70,10 +78,14 @@ public class RedisConfig extends CachingConfigurerSupport {
         RedisTemplate<String, Object> redisTemplate = new RedisTemplate<String, Object>();
         redisTemplate.setConnectionFactory(jedisConnectionFactory);
         RedisSerializer stringSerializer = new StringRedisSerializer();
-        redisTemplate.setKeySerializer(stringSerializer);//key序列化
-        redisTemplate.setValueSerializer(jackson2JsonRedisSerializer);//value序列化
-        redisTemplate.setHashKeySerializer(stringSerializer);//Hash key序列化
-        redisTemplate.setHashValueSerializer(jackson2JsonRedisSerializer);//Hash value序列化
+        //key序列化
+        redisTemplate.setKeySerializer(stringSerializer);
+        //value序列化
+        redisTemplate.setValueSerializer(jackson2JsonRedisSerializer);
+        //Hash key序列化
+        redisTemplate.setHashKeySerializer(stringSerializer);
+        //Hash value序列化
+        redisTemplate.setHashValueSerializer(jackson2JsonRedisSerializer);
         redisTemplate.afterPropertiesSet();
         return redisTemplate;
     }

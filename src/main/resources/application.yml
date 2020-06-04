@@ -41,6 +41,12 @@ mybatis:
   check-config-location: false
   mapper-locations: mappers/*.xml
   type-aliases-package: com.example.demo.mapper
+  configuration:
+    map-underscore-to-camel-case: true
+    #sql打印
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+
 # 服务相关配置
 server:
   tomcat:
